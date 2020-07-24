@@ -1,15 +1,22 @@
 package lk.techtalks.consul.demo.controller;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/")
+@RefreshScope
 public class GreetingController {
+
+    @Value("${my.property.conf}")
+    private String conf;
 
     @GetMapping
     public String greet() {
-        return "Hello!";
+        return "Hello , "+conf;
     }
+
 }
