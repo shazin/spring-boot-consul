@@ -1,12 +1,9 @@
 spring:
   application:
-    name: web
+    name: webclient
   cloud:
     consul:
       host: 192.168.1.3
       port: 8500
-      config:
-        watch:
-          enabled: true
       discovery:
         preferIpAddress: true

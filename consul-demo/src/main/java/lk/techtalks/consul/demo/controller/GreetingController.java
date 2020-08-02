@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 @RestController
 @RequestMapping("/")
 @RefreshScope
@@ -15,8 +18,8 @@ public class GreetingController {
     private String conf;
 
     @GetMapping
-    public String greet() {
-        return "Hello , "+conf;
+    public String greet() throws UnknownHostException {
+        return "Hello , "+conf+ " from " + InetAddress.getLocalHost().getHostName();
     }
 
 }
